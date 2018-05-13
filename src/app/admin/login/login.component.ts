@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Inject, OnDestroy, Renderer2 } from '@angular/core';
+import { Renderer3 } from '@angular/core/src/render3/interfaces/renderer';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnDestroy {
 
-  constructor() { }
 
-  ngOnInit() {
+  constructor(private renderer: Renderer2) {
+    this.renderer.addClass(document.body, 'hold-transition');
+    this.renderer.addClass(document.body, 'login-page');
+  }
+
+  ngOnDestroy(): void {
+    this.renderer.removeClass(document.body, 'hold-transition');
+    this.renderer.removeClass(document.body, 'login-page');
   }
 
 }
