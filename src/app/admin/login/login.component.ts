@@ -1,11 +1,12 @@
-import { Component, OnInit, Inject, OnDestroy, Renderer2 } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy, Renderer2, ViewEncapsulation } from '@angular/core';
 import { Renderer3 } from '@angular/core/src/render3/interfaces/renderer';
 import 'node_modules/admin-lte/plugins/iCheck/icheck.js';
 // import '../../../assets/adminjs/login.js';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnDestroy {
 

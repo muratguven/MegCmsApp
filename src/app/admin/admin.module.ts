@@ -10,7 +10,8 @@ import { LoginComponent } from './login/login.component';
   ],
   declarations: [
     LoginComponent
-]
+],
+bootstrap: [LoginComponent]
 
 })
 export class AdminModule { }
