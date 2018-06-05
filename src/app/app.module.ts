@@ -1,4 +1,4 @@
-
+import { HomeComponent } from './components/home/home.component';
 import { AdminModule } from './admin/admin.module';
 import { CoreModule } from './core/core.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,6 +8,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './admin/login/login.component';
 const routeConfig: Routes = [
   {
+    path: '',
+    component: HomeComponent
+  },
+  {
   path: 'admin',
   component: LoginComponent
   }
@@ -15,7 +19,8 @@ const routeConfig: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
