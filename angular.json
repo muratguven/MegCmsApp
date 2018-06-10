@@ -22,19 +22,15 @@
               "src/favicon.ico",
               "src/assets",
               "src/assets/admin-lte"
-
             ],
             "styles": [
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.min.css"
-                      
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
-              
-              
             ]
           },
           "configurations": {
@@ -120,6 +116,120 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "adminapp": {
+      "root": "projects/adminapp/",
+      "sourceRoot": "projects/adminapp/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/adminapp",
+            "index": "projects/adminapp/src/index.html",
+            "main": "projects/adminapp/src/main.ts",
+            "polyfills": "projects/adminapp/src/polyfills.ts",
+            "tsConfig": "projects/adminapp/tsconfig.app.json",
+            "assets": [
+              "projects/adminapp/src/favicon.ico",
+              "projects/adminapp/src/assets"
+            ],
+            "styles": [
+              "projects/adminapp/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/adminapp/src/environments/environment.ts",
+                  "with": "projects/adminapp/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "adminapp:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "adminapp:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "adminapp:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/adminapp/src/test.ts",
+            "polyfills": "projects/adminapp/src/polyfills.ts",
+            "tsConfig": "projects/adminapp/tsconfig.spec.json",
+            "karmaConfig": "projects/adminapp/karma.conf.js",
+            "styles": [
+              "projects/adminapp/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/adminapp/src/favicon.ico",
+              "projects/adminapp/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/adminapp/tsconfig.app.json",
+              "projects/adminapp/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "adminapp-e2e": {
+      "root": "projects/adminapp-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/adminapp-e2e/protractor.conf.js",
+            "devServerTarget": "adminapp:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/adminapp-e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
