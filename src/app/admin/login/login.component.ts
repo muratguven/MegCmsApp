@@ -1,5 +1,4 @@
-import { Component, OnInit, Inject, OnDestroy, Renderer2, ViewEncapsulation } from '@angular/core';
-import { Renderer3 } from '@angular/core/src/render3/interfaces/renderer';
+import { Component, OnDestroy, Renderer2, ViewEncapsulation, OnInit } from '@angular/core';
 import 'src/assets/admin-lte/plugins/iCheck/icheck.js';
 import 'src/assets/adminjs/login.js';
 
@@ -12,7 +11,10 @@ import 'src/assets/adminjs/login.js';
 ],
   encapsulation: ViewEncapsulation.None
 })
-export class LoginComponent implements OnDestroy {
+export class LoginComponent implements OnDestroy, OnInit {
+  ngOnInit(): void {
+
+  }
 
 
   constructor(private renderer: Renderer2) {
